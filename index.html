@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>身高计算器</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body{
+				background-color: antiquewhite
+			}
+			div {
+			    margin: 0 auto;
+		
+			}
+			#a1 {
+			    width: 400px;
+			    height: 50px;
+			    
+			    margin-top: 200px;
+			    box-shadow: #222222 2px 2px 5px;
+			}
+			#a1 p {
+			    float: left;
+			    font-size: 30px;
+			    padding-right: 16px;
+			    animation-name: myani;
+			    animation-duration: 2s;
+			    animation-iteration-count: infinite;
+			    animation-timing-function: ease;
+			    animation-direction: alternate;
+			    animation-fill-mode: both;
+			}
+			.s1 {
+			    animation-delay: 0.2s;
+			}
+			.s2 {
+			    animation-delay: 0.4s;
+			}
+			.s3 {
+			    animation-delay: 0.6s;
+			}
+			.s4 {
+			    animation-delay: 0.8s;
+			}
+			.s5 {
+			    animation-delay: 1s;
+			}
+			.s6 {
+			    animation-delay: 1.2s;
+			}
+			.s7 {
+			    animation-delay: 1.4s;
+			}
+			.s8 {
+			    animation-delay: 1.6s;
+			}
+			@keyframes myani {
+			    0%, 100% {
+			        padding-bottom: 0;
+			    }
+			    50% {
+			        transform: translateY(-100px);
+			    }
+			}
+			
+			#wenzigd{
+				margin-left: 40%;
+				height: 3.1rem;
+				overflow: hidden;
+				transition: all 3s
+			}
+				
+			#t1{
+				position: absolute;
+				left: 20%;
+				height: 12rem;
+				
+			}
+			
+			.demo{
+				text-align: center;
+			    margin-top: 70%;
+				}
+			
+			
+			
+			@-webkit-keyframes rotation{	
+			    from {-webkit-transform: rotate(0deg);}	
+			    to {-webkit-transform: rotate(360deg);}
+			}
+			.an{
+			
+			    -webkit-transform: rotate(360deg);	
+			    animation: rotation 15s linear infinite;	
+			    -moz-animation: rotation 15s linear infinite;		
+			    -webkit-animation: rotation 15s linear infinite;		
+			    -o-animation: rotation 15s linear infinite;
+				border-radius: 50%
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<img  :style="{width:width2 +'rem'}" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-5c69332482cc58cbc014c31ec7c4f2e7_b.gif&refer=http%3A%2F%2Fpic4.zhimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1648735907&t=dc7cb6fa97154e7520964c228846c09d" style="position: absolute;left: 20%;transition: all 1.2s">
+			<div id="t1">	
+				<img v-show="isshow2" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F988f38ed93a127bcad3b139f34ba92a584ce557ddbcadb-92rOL6_fw658&refer=http%3A%2F%2Fhbimg.b0.upaiyun.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1648699452&t=2587c3aece3f2ab3d2e0cc2225bd8f61" >
+
+			</div>
+			<div id="wz" style="margin-top: 20%;">
+				<span id="w1" style="margin-left: 40%;font-size: 2rem;">
+				请输入您的身高
+			</span>
+			</div>
+			
+			<br />
+			<input type=number name="" id="i1" value="" / style="width: 10rem;height: 5rem;margin-left: 40%;border-radius:15%;font-size: 30px;" v-model="data1">
+			<span style="font-size: 2rem;">cm</span>
+			<button type="button" id="b1" style="width: 10.125rem;height: 8rem;font-size: 50px;border-radius:80%"@click="change" >确定</button>
+			<br /><br /><br />
+			
+			<div id="wenzigd" :style="{width:width1 +'rem'}" >
+				<span id=""style="font-size: 2rem;">
+					计算成功！您的身高为{{data1}}cm
+				</span>
+			</div>
+		    <div id="a1" v-if="isshow">
+		        <p class="s1">正</p>
+		        <p class="s2">在</p>
+		        <p class="s3">计</p>
+		        <p class="s4">算</p>
+		        <p class="s5">中</p>
+		        <p class="s6">。</p>
+		        <p class="s7">。</p>
+		        <p class="s8">。</p>
+		    </div>
+		<div class="demo">
+		    <img class="an img" src="微信图片_20220301205747.jpg" width="200" height="200"/>
+		</div>
+		
+		</div>
+			
+			<script>
+				var app = new Vue({
+					el:"#app",
+					data:{
+						isshow:false,
+						isshow2:false ,
+						isshow3:false,
+						data1:'',
+						width1:0,
+						width2:0
+					},
+					methods:{
+						change(){
+							if(this.data1===''){alert('你特么输入啊')}
+							else{this.isshow=true;
+							this.width1=0;
+							setTimeout(()=>{
+								
+								this.width2=50
+								this.isshow=false;
+								
+								
+								
+							},4000),
+							setTimeout(()=>{
+								this.isshow2=true;
+								this.width2=0
+							},8000)
+							setTimeout(()=>{
+								this.width1=30;
+								this.isshow2=false;
+								if(this.data1>200){
+									alert('你他吗有这么高吗？')
+								}
+								if(this.data1<100){
+									alert('你是蚂蚁吗？')
+								}
+							},12000)
+							
+							}
+							
+							
+						}
+					}
+						
+					
+				})
+			</script>
+	</body>
+</html>
